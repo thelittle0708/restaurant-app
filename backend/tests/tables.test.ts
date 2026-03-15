@@ -3,6 +3,8 @@ import { app } from '../src/index';
 import { prisma } from '../src/lib/prisma';
 
 beforeEach(async () => {
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
   await prisma.tableSession.deleteMany();
   await prisma.table.deleteMany();
 });

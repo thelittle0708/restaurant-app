@@ -4,6 +4,8 @@ import { prisma } from '../src/lib/prisma';
 
 let tableId: string;
 beforeEach(async () => {
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
   await prisma.tableSession.deleteMany();
   await prisma.table.deleteMany();
   const table = await prisma.table.create({ data: { name: 'T1', x: 0, y: 0 } });
